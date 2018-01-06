@@ -13,16 +13,14 @@
 
 // When an array in the array is null or empty, the method should return 0 too!
 // There will always be a missing element and its length will be always between the given arrays.
-function getLengthOfMissingArray(arrayOfArrays) {
+const getLengthOfMissingArray = function(arrayOfArrays) {
     if(arrayOfArrays == null || arrayOfArrays.length === 0 || arrayOfArrays.includes(null)) {
         return 0;
     }
-    const arrayOfLength = arrayOfArrays
-                            .map(array => array.length)
-                            .sort((a, b) => a - b);
+    const arrayOfLength = arrayOfArrays.map(array => array.length).sort((a, b) => a - b);
 
     if(arrayOfLength.includes(0)) {
-        return 0
+        return 0;
     }
 
     for (let index = 0; index < arrayOfLength.length; index ++) {
@@ -30,19 +28,6 @@ function getLengthOfMissingArray(arrayOfArrays) {
             return arrayOfLength[index] + 1;
         }
     }
-}
+};
 
-console.log(getLengthOfMissingArray([ [ 1, 2 ], [ 4, 5, 1, 1 ], [ 1 ], [ 5, 6, 7, 8, 9 ]] ), 3);
-console.log(getLengthOfMissingArray([[ 5, 2, 9 ], [ 4, 5, 1, 1 ], [ 1 ], [ 5, 6, 7, 8, 9 ] ]), 2);
-console.log(getLengthOfMissingArray([[],[0],[4, 2, 3, 1],[1, 4, 1]]), 0);
-console.log(getLengthOfMissingArray(null), 0);
-console.log(getLengthOfMissingArray([null,[1, 2]]), 0);
-console.log(getLengthOfMissingArray([[3, 2],
-    [1, 0, 4],
-    [0, 4, 4, 0, 0, 1],
-    [4, 1, 2, 3, 2],
-    [3, 3, 3, 1],
-    [3, 3, 4, 2, 3, 4, 3, 3],
-    [1, 4, 2, 0, 3, 2, 4, 1, 0],
-    [4, 4, 1, 1, 0, 1, 0, 1, 4, 0, 2],
-    [4, 1, 4, 2, 1, 1, 1, 4, 2, 1]]), 7)
+module.exports = getLengthOfMissingArray;

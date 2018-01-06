@@ -17,7 +17,7 @@
 const START_PAREN ="(";
 const CLOSE_PAREN = ")";
 
-function validParentheses(parens) {
+const validParentheses = function(parens) {
     if (parens.length % 2 !==0 || !parens.startsWith("(")) {
         return false;
     }
@@ -31,22 +31,19 @@ function validParentheses(parens) {
         } else if (paren === CLOSE_PAREN) {
             temp.pop(paren);
         }
-    })
+    });
     return temp.length === 0;
-}
+};
 
 // SOLUTION 2
-function validParentheses2(parens){
+const validParentheses2 = function(parens) {
     var indent = 0;
 
     for (var i = 0 ; i < parens.length && indent >= 0; i++) {
-      indent += (parens[i] === "(") ? 1 : -1;
+        indent += (parens[i] === "(") ? 1 : -1;
     }
 
     return (indent == 0);
-  }
+};
 
-console.log(validParentheses("(())"));// true
-console.log(validParentheses(")(()))"));// false
-console.log(validParentheses(")())((()())()("));//false
-console.log(validParentheses("(())((()())())"));//true
+module.exports = { validParentheses, validParentheses2 };
